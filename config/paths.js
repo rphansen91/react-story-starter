@@ -38,6 +38,11 @@ function getServedPath(appPackageJson) {
   return ensureSlash(servedUrl, true);
 }
 
+const titleCase = (name="") => name.split("-").map(w => w.slice(0, 1).toUpperCase() + w.slice(1).toLowerCase()).join(" ")
+
+const getAppName = (appPackageJson) =>
+  titleCase(require(appPackageJson).name);
+
 // config after eject: we're in ./config/
 module.exports = {
   dotenv: resolveApp('.env'),
@@ -50,6 +55,7 @@ module.exports = {
   yarnLockFile: resolveApp('yarn.lock'),
   testsSetup: resolveApp('src/setupTests.js'),
   appNodeModules: resolveApp('node_modules'),
+  appName: getAppName(resolveApp('package.json')),
   publicUrl: getPublicUrl(resolveApp('package.json')),
   servedPath: getServedPath(resolveApp('package.json')),
 };

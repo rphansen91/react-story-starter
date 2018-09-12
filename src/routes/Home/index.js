@@ -1,3 +1,3 @@
 import React from "react";
 
-export default () => <p>Home</p>;
+export default () => <p>{ process.env.APP_NAME }</p>;
