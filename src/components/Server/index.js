@@ -11,15 +11,22 @@ const statusQuery = gql`
   }
 `;
 
+const ActiveIcon = ({ active }) =>
+  active ? (
+    <i className="fas fa-check text-success" />
+  ) : (
+    <i className="fas fa-times text-danger" />
+  );
+
 const IsActive = ({ data }) => (
-  <p>
-    <b>Active:</b> {String(data.active)}
+  <p className="mb-0">
+    <ActiveIcon active={data.active} /> <b>Active</b>
   </p>
 );
 
 const IsReady = ({ data }) => (
-  <p>
-    <b>Ready:</b> {String(data.ready)}
+  <p className="mb-0">
+    <ActiveIcon active={data.ready} /> <b>Ready</b>
   </p>
 );
 
@@ -35,4 +42,10 @@ export const Ready = () => (
   </Query>
 );
 
-export default () => [<Active key="active" />, <Ready key="ready" />];
+export default () => (
+  <div>
+    <h2>Server Status</h2>
+    <Active key="active" />
+    <Ready key="ready" />
+  </div>
+);

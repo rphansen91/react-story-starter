@@ -1,6 +1,7 @@
 import React, { Children } from "react";
 import { Link } from "react-router-dom";
 import withActive from "../Active";
+import cx from "../../utils/cx";
 
 const BrandIcon = props => (
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 612 612" {...props}>
@@ -15,7 +16,7 @@ const BrandIcon = props => (
 );
 
 export default withActive(({ active, setActive, toggleActive, children }) => (
-  <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+  <nav className="navbar navbar-expand-lg navbar-dark bg-dark w-100">
     <Link className="navbar-brand" to="/">
       <BrandIcon
         src=""
@@ -39,7 +40,11 @@ export default withActive(({ active, setActive, toggleActive, children }) => (
       <span className="navbar-toggler-icon" />
     </button>
     <div
-      className={"collapse navbar-collapse" + (active ? " show" : "")}
+      className={cx({
+        collapse: true,
+        "navbar-collapse": true,
+        show: active
+      })}
       id="navbarNavAltMarkup"
     >
       <div className="navbar-nav ml-auto">
