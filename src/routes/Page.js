@@ -4,10 +4,10 @@ import Footer from "../components/Footer";
 import Links from "./Links";
 import s from "./route.css";
 
-export default ({ children, links }) => (
+export default ({ children, links, footer = true }) => (
   <div className={s.page}>
     <Navbar>{links || Links}</Navbar>
     <div className={s.main}>{children}</div>
-    <Footer />
+    {footer && <Footer />}
   </div>
 );
