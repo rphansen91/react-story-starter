@@ -1,5 +1,4 @@
-import React from "react";
-import Links from "../../routes/Links";
+import React, { Children } from "react";
 import { Link } from "react-router-dom";
 import withActive from "../Active";
 
@@ -15,17 +14,17 @@ const BrandIcon = props => (
   </svg>
 );
 
-export default withActive(({ active, setActive, toggleActive }) => (
+export default withActive(({ active, setActive, toggleActive, children }) => (
   <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
     <Link className="navbar-brand" to="/">
       <BrandIcon
         src=""
         width="30"
         height="30"
-        class="d-inline-block align-top mr-1"
+        className="d-inline-block align-top mr-1"
         alt=""
       />
-      {process.env.APP_NAME}
+      {/* {process.env.APP_NAME} */}
     </Link>
     <button
       className="navbar-toggler"
@@ -43,8 +42,8 @@ export default withActive(({ active, setActive, toggleActive }) => (
       className={"collapse navbar-collapse" + (active ? " show" : "")}
       id="navbarNavAltMarkup"
     >
-      <div className="navbar-nav">
-        <Links onClick={() => setActive(false)} />
+      <div className="navbar-nav ml-auto">
+        {children({ onClick: () => setActive(false) })}
       </div>
     </div>
   </nav>

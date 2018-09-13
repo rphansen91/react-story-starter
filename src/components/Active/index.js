@@ -20,6 +20,7 @@ export default Cmp =>
           setActive={this.setActive}
           toggleActive={this.toggleActive}
           active={this.state.active}
+          {...this.props}
         />
       );
     }

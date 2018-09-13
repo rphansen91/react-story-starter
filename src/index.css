@@ -1,6 +1,15 @@
 @import "./styles/fonts.css";
 @import "./styles/variables.css";
 
+html,
+body {
+  height: 100%;
+}
+
+:global .fill {
+  height: 100%;
+}
+
 body {
   margin: 0;
   padding: 0;
