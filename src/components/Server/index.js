@@ -32,13 +32,19 @@ const IsReady = ({ data }) => (
 
 export const Active = () => (
   <Query pollInterval={POLL} query={statusQuery} errorPolicy="all">
-    {DataLoader(IsActive)}
+    {DataLoader({
+      DataCmp: IsActive,
+      ErrorCmp: () => <IsActive data={{ active: false }} />
+    })}
   </Query>
 );
 
 export const Ready = () => (
   <Query pollInterval={POLL} query={statusQuery} errorPolicy="all">
-    {DataLoader(IsReady)}
+    {DataLoader({
+      DataCmp: IsReady,
+      ErrorCmp: () => <IsReady data={{ ready: false }} />
+    })}
   </Query>
 );
 
